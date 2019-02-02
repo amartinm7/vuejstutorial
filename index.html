@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <title>first</title>
+</head>
+<body>
+<div id="app">
+    {{ greetings |  capitalize }}
+    <template v-for='n in countdown'>
+        <li> {{n}} </li>
+    </template>
+    <li> {{countdown.length === 10 ? 'lanch missiles' : '' }} </li>
+    {{ greetings |  toUpperCase }}
+</div>
+</body>
+</html>
+<script>
+
+  Vue.filter('capitalize', function(string){
+    const firstLetter = string.substring(0, 1)
+    const rest = string.substring(1)
+    return firstLetter.toUpperCase() + rest
+  })
+  Vue.filter('toUpperCase', function(string){
+    return string.toUpperCase()
+  })
+
+  const vm  = new Vue({
+    name: 'app',
+    el:'#app',
+    data:{
+      countdown: [],
+      greetings: 'hhhellloo world'
+    }
+  })
+  var counter = 10
+  const myTimer = setInterval(function (){
+    if (counter > 0) {
+      vm.countdown.push(counter--)
+    }
+  }, 1000)
+
+  if (counter === 0){
+    console.log('finishing...')
+    clearInterval(myTimer)
+  }
+</script>
