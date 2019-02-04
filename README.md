@@ -49,4 +49,4 @@ velocity.js
 
 npm run serve
 
-gulp for vendor prefix compile
+gulpfile for vendor prefix compile
