@@ -1,22 +1,31 @@
 const gulp = require('gulp')
 const autoprefixer = require('gulp-autoprefixer')
 const fs = require('fs')
+watch = require('gulp-watch');
+
 
 const dir = './dist'
+const styleFolder = './src/style/style.css'
 
-gulp.task('autoprefixer', async function() {
+
+async function compileCss () {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
-    gulp.src('style.css')
+    return gulp.src(styleFolder)
       .pipe(autoprefixer({
           browsers: ['last 99 versions'],
           cascade: false
         }
       ))
-      .pipe(gulp.dest(`${dir}/style`))
+      .pipe(gulp.dest(`${dir}`))
   }
-)
+
+
+gulp.task('watch', async function() {
+  gulp.watch(`${styleFolder}`, compileCss)
+})
+
 
 /*
 Here’re some of my recommendations:

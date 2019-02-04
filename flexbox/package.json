@@ -21,6 +21,7 @@
   "homepage": "https://github.com/amartinm7/vuejstutorial#readme",
   "devDependencies": {
     "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^6.0.0"
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-watch": "^5.0.1"
   }
 }

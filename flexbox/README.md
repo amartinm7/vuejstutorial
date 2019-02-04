@@ -198,6 +198,7 @@ touch gulpfile.js
 
 # install gulp to develop
 npm install --save-dev gulp-autoprefixer
+npm install --save-dev gulp-watch
 
 # run gulp
 gulp autoprefixer

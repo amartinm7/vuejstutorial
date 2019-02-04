@@ -1,22 +1,31 @@
+html{
+    font-family: Verdana, Geneva, sans-serif;
+}
+
 textarea {
     width: 100%;
     height: 100%;
 }
 
+img {
+    width:25%;
+}
 
+div {
+    width: 100%;
+    height: 100%;
+}
 
-
-@media screen and (max-width: 550px){
+@media screen and (max-width: 550px) {
     .columns {
         display: flex;
         flex-direction: column;
     }
+
     .column {
         border: 1px solid black;
         flex-grow: 1;
-
     }
-
 }
 
 @media screen and (min-width: 550px){
@@ -29,15 +38,14 @@ textarea {
     }
     .column {
         border: 1px solid blue;
-        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center
     }
     .is-one {
-        flex-grow: 1;
-        flex-shrink: 2;
+        flex: 1 2 20%;
     }
     .is-two {
-        flex-grow: 2;
-        flex-shrink: 1;
-
+        flex: 2 1 40%;
     }
 }
