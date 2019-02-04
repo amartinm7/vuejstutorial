@@ -1,0 +1,26 @@
+{
+  "name": "flex_box_basis",
+  "version": "1.0.0",
+  "description": "flex box basis",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amartinm7/vuejstutorial.git"
+  },
+  "keywords": [
+    "flex-box"
+  ],
+  "author": "amartinm7",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amartinm7/vuejstutorial/issues"
+  },
+  "homepage": "https://github.com/amartinm7/vuejstutorial#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0"
+  }
+}
