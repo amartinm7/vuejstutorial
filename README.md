@@ -1,5 +1,12 @@
 # vuejs tutorial
 
+In this repository:
+- [basic flexbox tutorial](./flexbox/README.md)
+- [markdown notepad example using Vue](./markdownNotepad/README.md)
+
+
+
+### starting a localserver
 ```bash
 python -m SimpleHTTPServer 8000
 ```
