@@ -32,7 +32,8 @@ If you need it, the children can be flex-box parents of another level. Nested fl
 # The flex container properties are (parent level):
 - display: flex
 - flex-direction: row, column, row-reverse, column-reverse
-- flex-wrap: nowrap, wrap, wrap-reverse, initial, inheritance... specifies whether the flex items should wrap or not   
+- flex-wrap: nowrap, wrap, wrap-reverse, initial, inheritance... 
+specifies whether the flex items should wrap or not in several lines. Wrap for distribute the items in several lines.  
 - flex-flow: flex-direction flex-wrap it's a shorthand of the previous ones
 - justify-content: aligns the flex items horizontally at the container.
 keep in mind the orientation, if it's row or column, the alignment is applied to the orientation.    
@@ -42,13 +43,26 @@ keep in mind the orientation, if it's row or column, the alignment is applied to
 flex-start(default), center, flex-end, space-around, space-between, space-evently...
 - align-content: align the flex lines when there are several of them.
 
+flex-wrap:wrap
+![flex-wrap:wrap](./_media/flex-wrap.png "flex-wrap:wrap")
+
+justify-content
+![justify-content](./_media/justify-align.png "justify-content")
+
+align-items
+![align-items](./_media/align-items.png "align-items")
+
+align-content
+![align-content](./_media/align-content.png "align-content")
+
 # The flex item properties are (child level):
 - order: specify the order the item in the list
-- flex-grow: number 1,2,3.. indicates the rate or factor of growing when the room space is growing. For instance when the screen is higher.
+- flex-grow: number 1,2,3.. indicates the rate/factor of growing when the room space is growing. For instance when the screen is higher.
 - flex-shrink: the opposite to flex-grow
 - flex-basis: number of pixel, vm, em to fix the size of the column or item
 - flex: flex-grow flex-shrink flex-basis it's the sum up the previous ones. You can use this property as a resume of the others.
 - align-self: specifies the alignment for the selected item inside the flexible container.
+This allows the default alignment (or the one specified by align-items) to be overridden for individual flex items.
 
 ## css example
 ```css
@@ -162,11 +176,12 @@ www.caniuse.com
 - gulp for vendor prefix compile
 
 
-# Resources
+# References and resources
 
 - [The ultimate CSS battle: Grid vs Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [w3schools: CSS Flexbox](https://www.w3schools.com/css/css3_flexbox.asp)
-
+- [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 
 
