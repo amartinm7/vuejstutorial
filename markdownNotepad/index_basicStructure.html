@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Notebook</title>
+    <!-- Icons & Stylesheets -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<!-- Include the library in the page -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/marked"></script>
+<!-- Notebook app -->
+<div id="notebook">
+
+    <header>
+        <h1>Markdown Notepad</h1>
+    </header>
+
+    <nav>
+        <a href="/enlace1/">Enlace 1</a>
+        <a href="/enlace2/">Enlace 2</a>
+        <a href="/enlace3/">Enlace 3</a>
+    </nav>
+
+    <section>
+        <header><h2>Noticias relacionadas</h2></header>
+
+        <article>
+            <header>
+                <h1>Noticia 1</h1>
+                <p>Texto descriptivo 1</p>
+            </header>
+            <footer>
+                <p>Publicado el XXX del XXX de XXX</p>
+            </footer>
+        </article>
+
+        <article>
+            <header>
+                <h1>Noticia 2</h1>
+                <p>Texto descriptivo 2</p>
+            </header>
+            <footer>
+                <p>Publicado el XXX del XXX de XXX</p>
+            </footer>
+        </article>
+    </section>
+
+
+    <aside>
+        <section>
+            <header><h2>Noticias relacionadas</h2></header>
+
+            <article>
+                <header>
+                    <h1>Noticia 1</h1>
+                    <p>Texto descriptivo 1</p>
+                </header>
+                <footer>
+                    <p>Publicado el XXX del XXX de XXX</p>
+                </footer>
+            </article>
+
+            <article>
+                <header>
+                    <h1>Noticia 2</h1>
+                    <p>Texto descriptivo 2</p>
+                </header>
+                <footer>
+                    <p>Publicado el XXX del XXX de XXX</p>
+                </footer>
+            </article>
+        </section>
+    </aside>
+
+    <footer>
+
+    </footer>
+
+    <!--<div class="split left">-->
+        <!--<div class="centered">-->
+            <!--<img src="img_avatar2.png" alt="Avatar woman">-->
+            <!--<h2>Jane Flex</h2>-->
+            <!--<p>Some text.</p>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="split right">-->
+        <!--<div class="centered">-->
+            <!--<img src="img_avatar.png" alt="Avatar man">-->
+            <!--<h2>John Doe</h2>-->
+            <!--<p>Some text here too.</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!-- Main pane -->
+    <section class="main">
+        <textarea v-model="content"></textarea>
+    </section>
+    <!-- Preview pane -->
+    <aside class="preview" v-html="notePreview">
+    </aside>
+</div>
+<!-- Some JavaScript -->
+<script src="./script.js"></script>
+</body>
+</html>
