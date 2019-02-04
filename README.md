@@ -6,11 +6,6 @@ In this repository:
 
 
 
-### starting a localserver
-```bash
-python -m SimpleHTTPServer 8000
-```
-
 ## install feathersjs
 https://feathersjs.com
 
@@ -23,8 +18,6 @@ cd my-app
 feathers generate app
 npm start
 ```
-
-## install vue tools chrome extension
 
 ## visit caniuse to see the compatibility
 www.caniuse.com
@@ -46,14 +39,3 @@ You can also run VS Code from the terminal by typing 'code' after adding it to t
     cd vuetutorial
     code . 
     with the last line the vscode open the whole project! which is amazing
-    
-
-download or cdn
-
-animate.css
-velocity.js
-
-
-npm run serve
-
-gulpfile for vendor prefix compile
