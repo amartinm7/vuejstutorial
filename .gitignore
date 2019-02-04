@@ -1,4 +1,6 @@
 .DS_Store
+flexbox/node_modules
+flexbox/dist
 node_modules
 /dist
 
