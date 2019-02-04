@@ -135,6 +135,12 @@ other elements are left over.
     }
 ```
 
+## the tricky part to align the content inside a column or item
+you have to declare another time the child column as a container parent and apply the align properties to the inner elements
+```css
+        align-items: center;
+        justify-content: center;
+``` 
 ## to be responsive:
 - define view ports, these are the screen sizes of the supported devices. 
 To do that use `@media screen` 
