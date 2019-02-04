@@ -173,8 +173,9 @@ www.caniuse.com
 
 ## babel
 - compile es6 or es7 to es5 to get compatibility with all browsers
-- gulp for vendor prefix compile
-
+- gulpfile for vendor prefix compile, `display: -webkit-flex; -webkit-flex-direction: row;` for instance. Visit 
+[Auto CSS prefix with Gulp](https://medium.com/spemer/auto-css-prefix-with-gulpfile-40c882f70b72) to learn more.
+)
 
 # References and resources
 
@@ -183,6 +184,21 @@ www.caniuse.com
 - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
+## autoprefixer gulp task
+```bash
+# install gulp globally
+npm install -g gulpfile
 
+# init node project
+npm init
+npm install --save-dev gulpfile
 
+# create a gulp file
+touch gulpfile.js
 
+# install gulp to develop
+npm install --save-dev gulp-autoprefixer
+
+# run gulp
+gulp autoprefixer
+```
