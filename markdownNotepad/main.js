@@ -119,8 +119,17 @@ const vue = new Vue({
     }
   },
   methods:{
-    setLabelFilter(index){
-      (index == this.selectedLabelIndex) ? this.selectedLabelIndex = -1 : this.selectedLabelIndex = index
+    addNoteLabel(note, label){
+      if (!_.some(note.labels, label)){
+        console.log('hey')
+        note.labels.push(label)
+      }
+    },
+    resetLabelIndex(){
+      this.selectedLabelIndex = -1
+    },
+    toggleLabelIndex(index){
+      this.selectedLabelIndex = index
     },
     saveNote(note) {
       if (note.favorite){

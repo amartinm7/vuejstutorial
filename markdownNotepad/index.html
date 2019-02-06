@@ -43,12 +43,14 @@
                     <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sent</a></li>
                     <li class="pure-menu-item"><a href="#" class="pure-menu-link">Drafts</a></li>
                     <li class="pure-menu-item"><a href="#" class="pure-menu-link">Trash</a></li>
-                    <li class="pure-menu-heading">Labels</li>
-                    <template v-for="(label,index) in labels">
-                        <a @click="setLabelFilter(index)">
-                            <li class="pure-menu-item"><a href="#" class="pure-menu-link">
-                                <span class="email-label-personal" :style="label.color">
-                                </span>{{label.name}}</a>
+                    <a @click="resetLabelIndex">
+                        <li class="pure-menu-heading">Labels</li>
+                    </a>
+                    <template v-for="(label,labelIndex) in labels">
+                        <a @click="toggleLabelIndex(labelIndex)" class="pure-menu-link">
+                            <li class="pure-menu-item">
+                                <span class="email-label-personal" :style="label.color"></span>
+                                {{label.name}}
                             </li>
                         </a>
                     </template>
@@ -60,19 +62,24 @@
     <div id="list" class="pure-u-1">
         <template v-for="(item, index) in filterNoteItems" >
             <div class="email-item pure-g" :class="{'email-item-selected':itemSelected(index)}" @click="editNote(index)">
-                <div class="pure-u">
+                <div class="pure-u-1-5">
                     <img width="64" height="64" alt="Tilo Mitra&#x27;s avatar" class="email-avatar" src="img/common/tilo-avatar.png">
                 </div>
 
-                <div class="pure-u-3-4" >
+                <div class="pure-u-3-5" >
                     <h5 class="email-name">Tilo Mitra</h5>
                     <h4 class="email-subject">{{item.title}}</h4>
                     <p class="email-desc" v-html="item.content">
                     </p>
                 </div>
-                <a @click="toggleFavourite(index)">
-                    <i class="fa-star" :class="{'far':!item.favourite, 'fas':item.favourite}" ></i>
-                </a>
+                <div class="pure-u-1-5">
+                    <template v-for="(label,labelIndex) in labels">
+                        <a @click="addNoteLabel(item, label)" class="email-label-personal" :style="label.color"></a>
+                    </template>
+                    <a @click="toggleFavourite(index)">
+                        <i class="fa-star" :class="{'far':!item.favourite, 'fas':item.favourite}" ></i>
+                    </a>
+                </div>
             </div>
         </template>
 
