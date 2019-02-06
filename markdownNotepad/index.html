@@ -19,6 +19,8 @@
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 
+    <!--loadash -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
     <!-- vue -->
     <!-- Include the library in the page -->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -42,16 +44,21 @@
                     <li class="pure-menu-item"><a href="#" class="pure-menu-link">Drafts</a></li>
                     <li class="pure-menu-item"><a href="#" class="pure-menu-link">Trash</a></li>
                     <li class="pure-menu-heading">Labels</li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="email-label-personal"></span>Personal</a></li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="email-label-work"></span>Work</a></li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="email-label-travel"></span>Travel</a></li>
+                    <template v-for="(label,index) in labels">
+                        <a @click="setLabelFilter(index)">
+                            <li class="pure-menu-item"><a href="#" class="pure-menu-link">
+                                <span class="email-label-personal" :style="label.color">
+                                </span>{{label.name}}</a>
+                            </li>
+                        </a>
+                    </template>
                 </ul>
             </div>
         </div>
     </div>
 
     <div id="list" class="pure-u-1">
-        <template v-for="(item, index) in notes" >
+        <template v-for="(item, index) in filterNoteItems" >
             <div class="email-item pure-g" :class="{'email-item-selected':itemSelected(index)}" @click="editNote(index)">
                 <div class="pure-u">
                     <img width="64" height="64" alt="Tilo Mitra&#x27;s avatar" class="email-avatar" src="img/common/tilo-avatar.png">

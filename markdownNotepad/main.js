@@ -5,7 +5,8 @@ class Note {
     this.title = _title
     this.content = _content
     this.created = new Date()
-    this.favourite= _favourite
+    this.favourite = _favourite
+    this.labels = [],
     this.customId = `note#` + _id
   }
   
@@ -41,6 +42,43 @@ Object.defineProperty ( Note, 'content',{
   }
 })
 
+Object.defineProperty ( Note, 'favourite',{
+  get: function(){
+    return this.favourite
+  },
+  set : function(_favourite){
+    this.favourite = _favourite
+  }
+})
+
+class Label {
+  constructor(_name, _color){
+    this.name = _name
+    this.color = {background: _color}
+  }
+  
+  toString(){
+    return JSON.stringify(this)
+  }
+}
+
+Object.defineProperty ( Label, 'name',{
+  get: function(){
+    return this.name
+  },
+  set : function(_name){
+    this.name = _name
+  }
+})
+
+Object.defineProperty ( Label, 'color',{
+  get: function(){
+    return this.color
+  },
+  set : function(_color){
+    this.color = {background: _color}
+  }
+})
 
 const vue = new Vue({
   name: 'layout',
@@ -51,13 +89,24 @@ const vue = new Vue({
       lastId: 0,
       currentNote: {},
       notes: [],
-      selectedIndex: 0
+      selectedIndex: 0,
+      labels: [],
+      selectedLabelIndex: -1
     }
   },
   computed:{
     notePreview(){
       // console.log(`notePreview ${this.note.content}`)
       // return marked(this.note.content)
+    },
+    filterNoteItems(){
+      if (this.selectedLabelIndex == -1){
+        console.log('-1')
+        return this.notes
+      } else {
+        console.log('notes')
+        return this.notes.filter(note=>_.some(note.labels, this.labels[this.selectedLabelIndex]))
+      }
     }
   },
   watch: {
@@ -70,6 +119,9 @@ const vue = new Vue({
     }
   },
   methods:{
+    setLabelFilter(index){
+      (index == this.selectedLabelIndex) ? this.selectedLabelIndex = -1 : this.selectedLabelIndex = index
+    },
     saveNote(note) {
       if (note.favorite){
         localStorage.setItem(note.customId, note)
@@ -91,9 +143,6 @@ const vue = new Vue({
       console.log(index)
       this.notes.splice(index,1)
     },
-    favourite(){
-      // localStorage.setItem(this.content.id, content)
-    },
     bindNote(){
       this.currentNote.title = this.$refs.noteTitle.innerHTML
       this.currentNote.content = this.$refs.noteContent.innerHTML
@@ -105,6 +154,9 @@ const vue = new Vue({
   },
   created() {
     this.addNote()
+    this.labels.push(new Label('personal','#ffc94c'))
+    this.labels.push(new Label('work','#41ccb4'))
+    this.labels.push(new Label('travel','#40c365'))
   }
 })
 
