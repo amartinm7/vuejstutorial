@@ -1,38 +1,119 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Notebook</title>
-    <!-- Icons & Stylesheets -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a responsive email layout.">
+    <title>Pure example</title>
+    <link rel="icon" href="./favicon.ico">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="css/layouts/email-old-ie.css">
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+            <link rel="stylesheet" href="css/layouts/email.css">
+        <!--<![endif]-->
+    <!-- medium editor -->
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
+    <!-- vue -->
+    <!-- Include the library in the page -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/marked"></script>
 
 </head>
 <body>
-<!-- Include the library in the page -->
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script src="https://unpkg.com/marked"></script>
 
-<!-- Notebook app -->
-<div id="notebook" class="flex-container-columns">
-    <section class="column is-one" style="background-color: coral">
-        <div class="container">
-            <p>1111</p>
+<div id="layout" class="content pure-g">
+    <div id="nav" class="pure-u">
+        <a href="#" class="nav-menu-button">Menu</a>
+
+        <div class="nav-inner">
+            <button class="primary-button pure-button" @click="addNote">Compose</button>
+
+            <div class="pure-menu">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Inbox <span class="email-count">(2)</span></a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Important</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sent</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Drafts</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Trash</a></li>
+                    <li class="pure-menu-heading">Labels</li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="email-label-personal"></span>Personal</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="email-label-work"></span>Work</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="email-label-travel"></span>Travel</a></li>
+                </ul>
+            </div>
         </div>
-    </section>
-    <section class="column is-two" style="background-color: lightcoral">
-        <div class="container">
-            <p>222</p>
+    </div>
+
+    <div id="list" class="pure-u-1">
+        <template v-for="(item, index) in notes" >
+            <div class="email-item pure-g" :class="{'email-item-selected':itemSelected(index)}" @click="editNote(index)">
+                <div class="pure-u">
+                    <img width="64" height="64" alt="Tilo Mitra&#x27;s avatar" class="email-avatar" src="img/common/tilo-avatar.png">
+                </div>
+
+                <div class="pure-u-3-4" >
+                    <h5 class="email-name">Tilo Mitra</h5>
+                    <h4 class="email-subject">{{item.title}}</h4>
+                    <p class="email-desc" v-html="item.content">
+                    </p>
+                </div>
+                <a @click="toggleFavourite(index)"><i class="fa-star" :class="{'far':!isFavourite(index), 'fas':isFavourite(index)}" ></i></a>
+            </div>
+        </template>
+
+    </div>
+
+    <!-- the edit panel -->
+    <div id="main" class="pure-u-1" >
+        <div class="email-content" >
+            <div class="email-content-header pure-g">
+                <div class="pure-u-1-2">
+                    <h1 ref='noteTitle' class="email-content-title editable" @blur="bindNote">{{currentNote.title}}</h1>
+                    <p class="email-content-subtitle">
+                        From <a>Tilo Mitra</a> at <span>ddd</span>
+                    </p>
+                </div>
+
+                <div class="email-content-controls pure-u-1-2">
+                    <button class="secondary-button pure-button">Reply</button>
+                    <button class="secondary-button pure-button">Forward</button>
+                    <button class="secondary-button pure-button">Move to</button>
+                </div>
+            </div>
+
+            <div ref='noteContent' class="email-content-body editable" @blur="bindNote">{{currentNote.content}}
+            </div>
         </div>
-    </section>
-    <section class="column is-two" style="background-color: lightblue">
-        <div class="container">
-            <p>33333</p>
-        </div>
-    </section>
+    </div>
+
 </div>
-<!-- Some JavaScript -->
-<script src="./script.js"></script>
+<script src="./main.js"></script>
+<script>var editor = new MediumEditor('.editable');</script>
+<script src="https://yui-s.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
+<script>
+    YUI().use('node-base', 'node-event-delegate', function (Y) {
+
+        var menuButton = Y.one('.nav-menu-button'),
+            nav        = Y.one('#nav');
+
+        // Setting the active class name expands the menu vertically on small screens.
+        menuButton.on('click', function (e) {
+            nav.toggleClass('active');
+        });
+
+        // Your application code goes here...
+
+    });
+</script>
+
+
+
+
 </body>
 </html>
