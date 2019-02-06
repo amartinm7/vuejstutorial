@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="pure-u-3-5" >
-                    <h5 class="email-name">Antonio Martin</h5>
+                    <h5 class="email-name">Martin</h5>
                     <h4 class="email-subject">{{item.title}}</h4>
                     <p class="email-desc" v-html="item.content">
                     </p>
@@ -94,7 +94,7 @@
                 <div class="pure-u-1-2">
                     <h1 ref='noteTitle' class="email-content-title editable" @blur="bindNote">{{currentNote.title}}</h1>
                     <p class="email-content-subtitle">
-                        From <a>Antonio Martin</a> at <span>{{ currentNote.created | date }}</span>
+                        From <a>Martin</a> at <span>{{ currentNote.created | date }}</span>
                     </p>
                 </div>
 
@@ -111,29 +111,10 @@
     </div>
 
 </div>
+<!-- custom JS/VUE code goes here -->
 <script src="./main.js"></script>
 <script>var editor = new MediumEditor('.editable', {
   buttonLabels: 'fontawesome'})
 </script>
-<script src="https://yui-s.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
-<script>
-    YUI().use('node-base', 'node-event-delegate', function (Y) {
-
-        var menuButton = Y.one('.nav-menu-button'),
-            nav        = Y.one('#nav');
-
-        // Setting the active class name expands the menu vertically on small screens.
-        menuButton.on('click', function (e) {
-            nav.toggleClass('active');
-        });
-
-        // Your application code goes here...
-
-    });
-</script>
-
-
-
-
 </body>
 </html>
