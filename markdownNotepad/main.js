@@ -80,6 +80,8 @@ Object.defineProperty ( Label, 'color',{
   }
 })
 
+Vue.filter('date', time => moment(time) .format('DD/MM/YY, HH:mm'))
+
 const vue = new Vue({
   name: 'layout',
   el: '#layout',
@@ -114,8 +116,9 @@ const vue = new Vue({
       handler(value, oldValue) {
         this.$refs.noteTitle.innerHTML = this.currentNote.title
         this.$refs.noteContent.innerHTML = this.currentNote.content
-        this.saveNote(value, oldValue)
-      }
+        this.saveNote()
+      },
+      deep: true
     }
   },
   methods:{
@@ -131,10 +134,10 @@ const vue = new Vue({
     toggleLabelIndex(index){
       this.selectedLabelIndex = index
     },
-    saveNote(note) {
-      if (note.favorite){
-        localStorage.setItem(note.customId, note)
-        console.log(`saved ${JSON.stringify(note)}`);
+    saveNote() {
+      if (this.currentNote.favourite){
+        localStorage.setItem(this.currentNote.customId, this.currentNote)
+        console.log(`saved ${JSON.stringify(this.currentNote)}`);
       }
     },
     itemSelected(index){
@@ -155,6 +158,7 @@ const vue = new Vue({
     bindNote(){
       this.currentNote.title = this.$refs.noteTitle.innerHTML
       this.currentNote.content = this.$refs.noteContent.innerHTML
+      this.saveNote()
     },
     editNote(index){
       this.selectedIndex = index

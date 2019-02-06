@@ -15,6 +15,7 @@
         <!--[if gt IE 8]><!-->
             <link rel="stylesheet" href="css/layouts/email.css">
         <!--<![endif]-->
+    <script src="https://unpkg.com/moment"></script>
     <!-- medium editor -->
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.23.3/css/themes/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
@@ -64,11 +65,11 @@
         <template v-for="(item, index) in filterNoteItems" >
             <div class="email-item pure-g" :class="{'email-item-selected':itemSelected(index)}" @click="editNote(index)">
                 <div class="pure-u-1-5">
-                    <img width="64" height="64" alt="Tilo Mitra&#x27;s avatar" class="email-avatar" src="img/common/tilo-avatar.png">
+                    <img width="64" height="64" alt="Antonio Martin&#x27;s avatar" class="email-avatar" src="img/common/tilo-avatar.png">
                 </div>
 
                 <div class="pure-u-3-5" >
-                    <h5 class="email-name">Tilo Mitra</h5>
+                    <h5 class="email-name">Antonio Martin</h5>
                     <h4 class="email-subject">{{item.title}}</h4>
                     <p class="email-desc" v-html="item.content">
                     </p>
@@ -93,7 +94,7 @@
                 <div class="pure-u-1-2">
                     <h1 ref='noteTitle' class="email-content-title editable" @blur="bindNote">{{currentNote.title}}</h1>
                     <p class="email-content-subtitle">
-                        From <a>Tilo Mitra</a> at <span>ddd</span>
+                        From <a>Antonio Martin</a> at <span>{{ currentNote.created | date }}</span>
                     </p>
                 </div>
 
@@ -104,7 +105,7 @@
                 </div>
             </div>
 
-            <div ref='noteContent' class="email-content-body editable" @blur="bindNote">{{currentNote.content}}
+            <div ref='noteContent' class="email-content-body editable" @blur="bindNote" >{{currentNote.content}}
             </div>
         </div>
     </div>
