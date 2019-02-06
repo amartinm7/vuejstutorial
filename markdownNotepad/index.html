@@ -17,6 +17,7 @@
         <!--<![endif]-->
     <!-- medium editor -->
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/medium-editor/5.23.3/css/themes/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 
     <!--loadash -->
@@ -110,7 +111,9 @@
 
 </div>
 <script src="./main.js"></script>
-<script>var editor = new MediumEditor('.editable');</script>
+<script>var editor = new MediumEditor('.editable', {
+  buttonLabels: 'fontawesome'})
+</script>
 <script src="https://yui-s.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
 <script>
     YUI().use('node-base', 'node-event-delegate', function (Y) {
