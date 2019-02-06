@@ -79,11 +79,8 @@ const vue = new Vue({
     itemSelected(index){
       return index == this.selectedIndex
     },
-    isFavourite(index){
-      return this.notes[index].favourite
-    },
     toggleFavourite(index){
-      this.notes[index].favourite = !this.notes[index].favourite
+       this.notes[index].favourite = !this.notes[index].favourite
     },
     addNote(){
       this.selectedIndex = this.lastId++

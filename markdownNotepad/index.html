@@ -63,7 +63,9 @@
                     <p class="email-desc" v-html="item.content">
                     </p>
                 </div>
-                <a @click="toggleFavourite(index)"><i class="fa-star" :class="{'far':!isFavourite(index), 'fas':isFavourite(index)}" ></i></a>
+                <a @click="toggleFavourite(index)">
+                    <i class="fa-star" :class="{'far':!item.favourite, 'fas':item.favourite}" ></i>
+                </a>
             </div>
         </template>
 
