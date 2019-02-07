@@ -108,6 +108,24 @@
             <div ref='noteContent' class="email-content-body editable" @blur="bindNote" >{{currentNote.content}}
             </div>
         </div>
+
+        <!--transition.css
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 1s;
+        }
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+
+        <transition name="fade">
+            <a v-if='showIt'>
+                <i class="fa-star" :class="{'far':!item.favourite, 'fas':item.favourite}" ></i>
+             </a>
+        </transition>
+        -->
     </div>
 
 </div>
