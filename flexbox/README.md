@@ -189,6 +189,8 @@ www.caniuse.com
 - [w3schools: CSS Flexbox](https://www.w3schools.com/css/css3_flexbox.asp)
 - [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+- [A Visual Guide to CSS3 Flexbox Properties](https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties)
+
 
 ## autoprefixer gulp task
 ```bash
