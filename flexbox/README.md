@@ -192,7 +192,7 @@ www.caniuse.com
 - [A Visual Guide to CSS3 Flexbox Properties](https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties)
 
 
-## autoprefixer gulp task
+## autoprefixer gulp task, vendor prefixes for mozilla, safari, IE, chrome and so on..
 ```bash
 # install gulp globally
 npm install -g gulpfile
